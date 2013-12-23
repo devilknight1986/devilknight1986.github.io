@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<title>Todo List Home Work!</title>
+	</head>
+	
+	<body>
+		<h1 align="center" style="cursor:pointer; background-color:yellow; font-size:50px; margin-top:25px;">Todo Lists</h1>	
+	
+	<div style="width:800px; height:400px; border:1px #FF0000 solid; overflow:scroll;" align="left">
+		<ol id="TodoList" align="center" type="T" style="font-size:100px; margin-top:20px; margin-left:100px;" onmouseover=OnMouseOverOl(this)>
+			<!--li style="cursor:hand;" onclick=OnClickDelete(this)>Play BascketBall</li>
+			<li>Play Football</li-->
+		
+		</ol>
+	</div>
+	
+	<script>
+		function OnMouseOverOl(which)
+		{
+			TodoList.style.cursor="hand";
+		}
+
+		function OnClickDelete(which)
+		{
+			alert("You Delete this Todo List");
+			TodoList.removeChild(which);
+		}
+
+		function OnClickSubmit()
+		{
+			//alert("Todo thing added!");
+			var todoStr = TodoInput.value;
+			alert("The str will be add is: " + todoStr); 
+			var newItem = document.createElement("li");
+			var itemContent = document.createTextNode(todoStr);
+			newItem.appendChild(itemContent);
+			newItem.onclick = function(){OnClickDelete(this)};
+			TodoList.insertBefore(newItem, TodoList.firstChild); 
+			//TodoList.appendChild(newItem);
+		}
+	</script>
+
+	<br>
+	<form action="">
+		Please Input you Todo Thing:   <input id="TodoInput" name="inputtext" size="20" type="text" style="margin-left:100px;"> 
+		<br>
+		<br>
+		Summit Todo Thing to List:     <input type="button" name="Submit" value="submit" style="margin-left:100px;" onClick="OnClickSubmit()"> 
+	</form>
+	</body>
+</html>
